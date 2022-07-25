@@ -104,9 +104,23 @@ body {
   height: 100%;
 }
 
+.books {
+  padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 400px);
+  grid-auto-rows: 300px;
+  gap: 20px;
+}
+
 .book-card {
-  height: 300px;
-  width: 250px;
   background-color: white;
   padding: 15px;
+}
+
+th {
+  text-align: left;
+}
+
+td {
+  text-align: right;
 }

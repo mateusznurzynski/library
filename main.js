@@ -22,40 +22,49 @@ function Book(title, author, pages, read) {
 
 function addNewBook(title, author, pages, read) {
   allBooks.push(new Book(title, author, pages, read));
+  refreshBooks();
   console.log(allBooks);
 }
 
 addNewBook('Krzyżacy', 'Henryk Sienkiewicz', 1234);
 
-allBooks.forEach((book) => {
-  const bookCard = document.createElement('div');
+function refreshBooks() {
+  books.textContent = '';
+
+  const bookCard = document.createElement('table');
   bookCard.classList.add('book-card');
 
-  const bookTitle = document.createElement('p');
-  bookTitle.classList.add('book-title');
-  bookTitle.textContent = `Title: ${book.title}`;
+  const cardRow = document.createElement('tr');
 
-  const bookAuthor = document.createElement('p');
-  bookAuthor.classList.add('book-author');
-  bookAuthor.textContent = `Author: ${book.author}`;
+  const rowTitle = document.createElement('th');
+  const rowContent = document.createElement('td');
+  cardRow.appendChild(rowTitle);
+  cardRow.appendChild(rowContent);
 
-  const bookPages = document.createElement('p');
-  bookPages.classList.add('book-pages');
-  bookPages.textContent = `Pages: ${book.pages}`;
+  allBooks.forEach((book) => {
+    const newBookCard = bookCard.cloneNode(true);
+    const newTitle = cardRow.cloneNode(true);
+    const newAuthor = cardRow.cloneNode(true);
+    const newPages = cardRow.cloneNode(true);
 
-  const bookRead = document.createElement('p');
-  bookRead.classList.add('book-read');
-  bookRead.textContent = book.read ? 'Already read' : 'Not read yet';
+    newTitle.firstChild.textContent = 'Title: ';
+    newTitle.lastChild.textContent = `„${book.title}”`;
 
-  bookCard.appendChild(bookTitle);
-  bookCard.appendChild(bookAuthor);
-  bookCard.appendChild(bookPages);
-  bookCard.appendChild(bookRead);
+    newAuthor.firstChild.textContent = 'Author: ';
+    newAuthor.lastChild.textContent = book.author;
 
-  books.appendChild(bookCard);
+    newPages.firstChild.textContent = 'Pages: ';
+    newPages.lastChild.textContent = book.pages;
 
-  console.log(bookCard);
-});
+    newBookCard.appendChild(newTitle);
+    newBookCard.appendChild(newAuthor);
+    newBookCard.appendChild(newPages);
+
+    books.appendChild(newBookCard);
+
+    console.log(bookCard);
+  });
+}
 
 function toggleModal(e) {
   modal.classList.toggle('active');
