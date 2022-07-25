@@ -14,3 +14,17 @@ body {
   background-color: #222;
   font-family: Arial, Helvetica, sans-serif;
 }
+
+.new-book-btn {
+  padding: 7px;
+  background-color: gray;
+  color: white;
+  margin: 20px;
+}
+
+.book-card {
+  height: 300px;
+  width: 250px;
+  background-color: white;
+  padding: 15px;
+}
