@@ -30,7 +30,6 @@ Book.prototype.toggleRead = function (e) {
   } else {
     e.target.textContent = STATUS_MESSAGE_FALSE;
   }
-  console.log(this);
 };
 
 function addNewBook(title, author, pages, read) {
@@ -134,19 +133,3 @@ function removeBook(e) {
   allBooks.splice(bookId, 1);
   refreshBooks();
 }
-
-// function toggleRead(e) {
-//   const bookId = e.target.parentNode.getAttribute('data-book-id');
-//   if (e.target.classList.contains('green')) {
-//     e.target.classList.remove('green');
-//     e.target.classList.add('red');
-//     e.target.textContent = STATUS_MESSAGE_FALSE;
-//     allBooks[bookId].read = false;
-//   } else {
-//     e.target.classList.remove('red');
-//     e.target.classList.add('green');
-//     e.target.textContent = STATUS_MESSAGE_TRUE;
-//     allBooks[bookId].read = true;
-//   }
-//   console.log(allBooks);
-// }

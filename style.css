@@ -14,20 +14,36 @@ html {
   --modal-background: rgba(0, 0, 0, 0.5);
   --success: #28a745;
   --danger: rgba(220, 53, 69, 0.8);
+  --primary: rgb(216, 216, 216);
+  --secondary: rgb(255, 255, 255);
 }
 
 body {
-  background-color: #222;
+  background-color: var(--primary);
   font-family: Arial, Helvetica, sans-serif;
 }
 
+header {
+  background-color: var(--secondary);
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2.5rem;
+  padding: 30px;
+  -webkit-box-shadow: 0px 0px 10px 0px rgba(66, 68, 90, 1);
+  -moz-box-shadow: 0px 0px 10px 0px rgba(66, 68, 90, 1);
+  box-shadow: 0px 0px 10px 0px rgba(66, 68, 90, 1);
+}
+
 .new-book-btn {
-  padding: 7px;
-  background-color: gray;
+  padding: 20px;
+  background-color: var(--secondary);
   border: none;
-  color: white;
   margin: 20px;
   cursor: pointer;
+  font-size: 1rem;
+  font-weight: bold;
 }
 
 .modal-form {
@@ -35,6 +51,8 @@ body {
   height: 100vh;
   width: 100vw;
   position: fixed;
+  top: 0;
+  left: 0;
   background-color: var(--modal-background);
   justify-content: center;
   align-items: center;
@@ -82,28 +100,11 @@ body {
 .submit-btn {
   padding: 7px;
   cursor: pointer;
-  background-color: lime;
+  background-color: var(--success);
   border: none;
   font-size: 1.2rem;
   align-self: center;
   width: 75%;
-}
-
-.close-btn {
-  align-self: flex-end;
-  height: 32px;
-  width: 32px;
-  border: none;
-  background-color: transparent;
-  cursor: pointer;
-  position: absolute;
-  top: 16px;
-  right: 16px;
-}
-
-.close-btn img {
-  width: 100%;
-  height: 100%;
 }
 
 .books {
@@ -120,6 +121,9 @@ body {
   display: flex;
   flex-direction: column;
   gap: 10px;
+  -webkit-box-shadow: 0px 0px 10px 0px rgba(66, 68, 90, 1);
+  -moz-box-shadow: 0px 0px 10px 0px rgba(66, 68, 90, 1);
+  box-shadow: 0px 0px 10px 0px rgba(66, 68, 90, 1);
 }
 
 .book-card table {
@@ -139,6 +143,7 @@ td {
   padding: 15px;
   cursor: pointer;
   background-color: var(--danger);
+  text-align: center;
 }
 
 .read.true {
