@@ -83,6 +83,8 @@ function createCards() {
       alreadyRead.classList.add('red');
     }
 
+    button.addEventListener('click', removeBook);
+
     newBookCard.firstChild.appendChild(newTitle);
     newBookCard.firstChild.appendChild(newAuthor);
     newBookCard.firstChild.appendChild(newPages);
@@ -111,4 +113,10 @@ function submitBookForm(e) {
   toggleModal();
   bookForm.reset();
   e.preventDefault();
+}
+
+function removeBook(e) {
+  const bookId = e.target.parentNode.getAttribute('data-book-id');
+  allBooks.splice(bookId, 1);
+  refreshBooks();
 }
