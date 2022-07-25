@@ -137,14 +137,12 @@ td {
 
 .read {
   padding: 15px;
-}
-
-.read.green {
-  background-color: var(--success);
-}
-
-.read.red {
+  cursor: pointer;
   background-color: var(--danger);
+}
+
+.read.true {
+  background-color: var(--success);
 }
 
 .remove-button {

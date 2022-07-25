@@ -3,6 +3,8 @@ const newBookButton = document.querySelector('.new-book-btn');
 const modal = document.querySelector('.modal-form');
 const bookForm = document.querySelector('.book-form');
 const submitButton = document.querySelector('.submit-btn');
+const STATUS_MESSAGE_TRUE = 'Status: Already read';
+const STATUS_MESSAGE_FALSE = 'Status: Not read yet';
 
 newBookButton.addEventListener('click', toggleModal);
 modal.addEventListener('click', toggleModal);
@@ -20,10 +22,20 @@ function Book(title, author, pages, read) {
   this.read = Boolean(read);
 }
 
+Book.prototype.toggleRead = function (e) {
+  this.read = this.read ? false : true;
+  e.target.classList.toggle('true');
+  if (this.read) {
+    e.target.textContent = STATUS_MESSAGE_TRUE;
+  } else {
+    e.target.textContent = STATUS_MESSAGE_FALSE;
+  }
+  console.log(this);
+};
+
 function addNewBook(title, author, pages, read) {
   allBooks.push(new Book(title, author, pages, read));
   refreshBooks();
-  console.log(allBooks);
 }
 
 addNewBook('Krzyżacy', 'Henryk Sienkiewicz', 1234, true);
@@ -75,13 +87,15 @@ function createCards() {
     newPages.lastChild.textContent = book.pages ? book.pages : 'Not specified';
 
     alreadyRead.textContent = book.read
-      ? 'Status: Already read'
-      : 'Status: Not read yet';
+      ? STATUS_MESSAGE_TRUE
+      : STATUS_MESSAGE_FALSE;
     if (book.read) {
-      alreadyRead.classList.add('green');
-    } else {
-      alreadyRead.classList.add('red');
+      alreadyRead.classList.add('true');
     }
+
+    alreadyRead.addEventListener('click', (e) => {
+      book.toggleRead.call(book, e);
+    });
 
     button.addEventListener('click', removeBook);
 
@@ -120,3 +134,19 @@ function removeBook(e) {
   allBooks.splice(bookId, 1);
   refreshBooks();
 }
+
+// function toggleRead(e) {
+//   const bookId = e.target.parentNode.getAttribute('data-book-id');
+//   if (e.target.classList.contains('green')) {
+//     e.target.classList.remove('green');
+//     e.target.classList.add('red');
+//     e.target.textContent = STATUS_MESSAGE_FALSE;
+//     allBooks[bookId].read = false;
+//   } else {
+//     e.target.classList.remove('red');
+//     e.target.classList.add('green');
+//     e.target.textContent = STATUS_MESSAGE_TRUE;
+//     allBooks[bookId].read = true;
+//   }
+//   console.log(allBooks);
+// }
