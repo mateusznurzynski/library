@@ -10,6 +10,10 @@ html {
   padding: 0;
 }
 
+:root {
+  --modal-background: rgba(0, 0, 0, 0.5);
+}
+
 body {
   background-color: #222;
   font-family: Arial, Helvetica, sans-serif;
@@ -20,6 +24,61 @@ body {
   background-color: gray;
   color: white;
   margin: 20px;
+  cursor: pointer;
+}
+
+.modal-form {
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  background-color: var(--modal-background);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.book-form {
+  background-color: white;
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.input-wrapper {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.checkbox-wrapper {
+  justify-content: center;
+  cursor: pointer;
+}
+
+.checkbox-wrapper input,
+.checkbox-wrapper label {
+  cursor: pointer;
+}
+
+.book-form input {
+  padding: 5px;
+}
+
+.form-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.submit-btn {
+  padding: 7px;
+  cursor: pointer;
+  background-color: lime;
+  border: none;
+  font-size: 1.2rem;
+  align-self: center;
+  width: 75%;
 }
 
 .book-card {
