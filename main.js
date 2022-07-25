@@ -1,4 +1,13 @@
 const books = document.querySelector('.books');
+const newBookButton = document.querySelector('.new-book-btn');
+const modal = document.querySelector('.modal-form');
+const bookForm = document.querySelector('.book-form');
+
+newBookButton.addEventListener('click', toggleModal);
+modal.addEventListener('click', toggleModal);
+bookForm.addEventListener('click', (e) => {
+  e.stopPropagation();
+});
 
 let allBooks = [];
 
@@ -45,3 +54,7 @@ allBooks.forEach((book) => {
 
   console.log(bookCard);
 });
+
+function toggleModal(e) {
+  modal.classList.toggle('active');
+}
