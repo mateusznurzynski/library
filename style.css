@@ -12,6 +12,8 @@ html {
 
 :root {
   --modal-background: rgba(0, 0, 0, 0.5);
+  --success: #28a745;
+  --danger: rgba(220, 53, 69, 0.8);
 }
 
 body {
@@ -115,6 +117,14 @@ body {
 .book-card {
   background-color: white;
   padding: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.book-card table {
+  height: 100%;
+  width: 100%;
 }
 
 th {
@@ -123,4 +133,16 @@ th {
 
 td {
   text-align: right;
+}
+
+.read {
+  padding: 15px;
+}
+
+.read.green {
+  background-color: var(--success);
+}
+
+.read.red {
+  background-color: var(--danger);
 }
