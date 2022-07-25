@@ -2,12 +2,14 @@ const books = document.querySelector('.books');
 const newBookButton = document.querySelector('.new-book-btn');
 const modal = document.querySelector('.modal-form');
 const bookForm = document.querySelector('.book-form');
+const submitButton = document.querySelector('.submit-btn');
 
 newBookButton.addEventListener('click', toggleModal);
 modal.addEventListener('click', toggleModal);
 bookForm.addEventListener('click', (e) => {
   e.stopPropagation();
 });
+submitButton.addEventListener('click', submitBookForm);
 
 let allBooks = [];
 
@@ -20,10 +22,10 @@ function Book(title, author, pages, read) {
 
 function addNewBook(title, author, pages, read) {
   allBooks.push(new Book(title, author, pages, read));
+  console.log(allBooks);
 }
 
 addNewBook('Krzyżacy', 'Henryk Sienkiewicz', 1234);
-console.log(allBooks);
 
 allBooks.forEach((book) => {
   const bookCard = document.createElement('div');
@@ -57,4 +59,16 @@ allBooks.forEach((book) => {
 
 function toggleModal(e) {
   modal.classList.toggle('active');
+}
+
+function submitBookForm(e) {
+  const newTitle = document.querySelector('#book-title').value;
+  const newAuthor = document.querySelector('#book-author').value;
+  const newPages = document.querySelector('#book-pages').value;
+  const newRead = document.querySelector('#book-read').checked;
+
+  addNewBook(newTitle, newAuthor, newPages, newRead);
+  toggleModal();
+  bookForm.reset();
+  e.preventDefault();
 }
