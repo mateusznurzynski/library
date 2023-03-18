@@ -11,7 +11,7 @@ modal.addEventListener('click', toggleModal);
 bookForm.addEventListener('click', (e) => {
   e.stopPropagation();
 });
-submitButton.addEventListener('click', submitBookForm);
+bookForm.addEventListener('submit', submitBookForm);
 
 let allBooks = [];
 
@@ -117,10 +117,6 @@ function submitBookForm(e) {
   const newAuthor = document.querySelector('#book-author').value;
   const newPages = document.querySelector('#book-pages').value;
   const newRead = document.querySelector('#book-read').checked;
-
-  if (!newTitle) {
-    return;
-  }
 
   addNewBook(newTitle, newAuthor, newPages, newRead);
   toggleModal();

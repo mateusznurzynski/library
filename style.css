@@ -92,6 +92,10 @@ header {
   padding: 5px;
 }
 
+.book-form input:not(:focus):not(:placeholder-shown):invalid {
+  border: 2px var(--danger) solid;
+}
+
 .form-header {
   text-align: center;
   margin-bottom: 20px;
